@@ -126,6 +126,11 @@
                                                     {{ session()->get('success') }}
                                                 </div>
                                             @endif
+                                            @if(session()->has('error'))
+                                                <div class="alert alert-danger">
+                                                    {{ session()->get('error') }}
+                                                </div>
+                                            @endif
                                             <div class="row gy-4">
                                                 @foreach($traders as $item)
                                                     <div class="col-lg-4 col-md-6 col-sm-12">

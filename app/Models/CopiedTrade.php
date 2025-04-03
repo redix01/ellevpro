@@ -25,7 +25,7 @@ class CopiedTrade extends Model
     {
         if ($this->status == 1)
         {
-            return '<span class="badge bg-success">Copying...</span>';
+            return '<span class="badge bg-success">Copied</span>';
         }elseif($this->status == 2)
         {
             return '<span class="badge bg-danger">Ended</span>';
