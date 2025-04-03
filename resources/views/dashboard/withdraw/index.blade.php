@@ -161,6 +161,23 @@
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const walletSelect = document.querySelector('select[name="wallet"]');
+    const walletAddressField = document.querySelector('input[name="address"]').closest('.buysell-field');
+
+    // Initially hide the wallet address field
+    walletAddressField.style.display = "none";
+
+    walletSelect.addEventListener("change", function () {
+        if (walletSelect.value) {
+            walletAddressField.style.display = "block";
+        } else {
+            walletAddressField.style.display = "none";
+        }
+    });
+});
+</script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>

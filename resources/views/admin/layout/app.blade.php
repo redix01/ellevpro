@@ -109,18 +109,7 @@
                                         <span class="nk-menu-text">Crypto Exchange</span>
                                     </a>
                                 </li>
-                                <li class="nk-menu-item">
-                                    <a href="{{ route('admin.swapHistory') }}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-swap"></em></span>
-                                        <span class="nk-menu-text">Swap History</span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="{{ route('admin.stakeHistory') }}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
-                                        <span class="nk-menu-text">Stake History</span>
-                                    </a>
-                                </li>
+
                                  <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">CRUD</h6>
                                 </li><!-- .nk-menu-item -->
@@ -136,12 +125,7 @@
                                         <span class="nk-menu-text">Bot Plan</span>
                                     </a>
                                 </li>
-                                <li class="nk-menu-item">
-                                    <a href="{{ route('admin.stakingPlan.index') }}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-list-fill"></em></span>
-                                        <span class="nk-menu-text">Staking Plans</span>
-                                    </a>
-                                </li>
+
                                 <li class="nk-menu-item">
                                     <a href="{{ route('admin.copyTrader.index') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-copy-fill"></em></span>

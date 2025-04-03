@@ -33,110 +33,111 @@
                 <div class="mb-20">
                     <label for="">Select Account Type</label>
                     <select name="acct_type" class="form-select" aria-label="Default select example">
-                        <option disabled selected>...</option>
-                        <option value="Live">Main Balance ({{ number_format(auth()->user()->balance, 2)}})</option>
+                        <option value="Live" selected>Main Balance ({{ number_format(auth()->user()->balance, 2)}})
+                        </option>
                         <option value="Demo">Demo Account ({{ number_format(auth()->user()->demo_balance, 2)}})</option>
                     </select>
                 </div>
                 <div class="mb-20">
-    <label for="tradeMarketSelect">Market</label>
-    <select name="trade_market" id="tradeMarketSelect" class="form-select" aria-label="Default select example">
-        <option disabled selected>Select Market</option>
-        <option value="Crypto">Cryptocurrency</option>
-        <option value="Stock">Stock</option>
-        <option value="Forex">Forex</option>
-        <option value="Commodities">Commodities</option>
-        <option value="Indices">Indices</option>
-        <option value="Bonds">Bonds</option>
-        <option value="ETFs">ETFs</option>
-    </select>
-</div>
+                    <label for="tradeMarketSelect">Market</label>
+                    <select name="trade_market" id="tradeMarketSelect" class="form-select"
+                            aria-label="Default select example">
+                        <option disabled selected>Select Market</option>
+                        <option value="Crypto">Cryptocurrency</option>
+                        <option value="Stock">Stock</option>
+                        <option value="Forex">Forex</option>
+                        <option value="Commodities">Commodities</option>
+                        <option value="Indices">Indices</option>
+                        <option value="Bonds">Bonds</option>
+                        <option value="ETFs">ETFs</option>
+                    </select>
+                </div>
 
-<div class="mb-20">
-    <div data-trade-pair-container="Cryptocurrency" class="trade-pair-container" style="display: none;">
-        <label for="">Pair</label>
-        <select class="form-select" name="crypto_pair" aria-label="Default select example">
-            <option selected disabled>..select..</option>
-            @foreach(auth()->user()->tradePairs() as $item)
-                @if($item->type == 'crypto')
-                    <option value="{{ $item->id }}">{{ $item->pair }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
+                <div class="mb-20">
+                    <div data-trade-pair-container="Cryptocurrency" class="trade-pair-container" style="display: none;">
+                        <label for="">Pair</label>
+                        <select class="form-select" name="crypto_pair" aria-label="Default select example">
+                            <option selected disabled>..select..</option>
+                            @foreach(auth()->user()->tradePairs() as $item)
+                                @if($item->type == 'crypto')
+                                    <option value="{{ $item->id }}">{{ $item->pair }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
 
-    <div data-trade-pair-container="Stock" class="trade-pair-container" style="display: none;">
-        <label for="">Pair</label>
-        <select class="form-select" name="stock_pair" aria-label="Default select example">
-            <option selected disabled>..select..</option>
-            @foreach(auth()->user()->tradePairs() as $item)
-                @if($item->type == 'stock')
-                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
+                    <div data-trade-pair-container="Stock" class="trade-pair-container" style="display: none;">
+                        <label for="">Pair</label>
+                        <select class="form-select" name="stock_pair" aria-label="Default select example">
+                            <option selected disabled>..select..</option>
+                            @foreach(auth()->user()->tradePairs() as $item)
+                                @if($item->type == 'stock')
+                                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
 
-    <div data-trade-pair-container="Forex" class="trade-pair-container" style="display: none;">
-        <label for="">Pair</label>
-        <select class="form-select" name="forex_pair" aria-label="Default select example">
-            <option selected disabled>..select..</option>
-            @foreach(auth()->user()->tradePairs() as $item)
-                @if($item->type == 'forex')
-                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
+                    <div data-trade-pair-container="Forex" class="trade-pair-container" style="display: none;">
+                        <label for="">Pair</label>
+                        <select class="form-select" name="forex_pair" aria-label="Default select example">
+                            <option selected disabled>..select..</option>
+                            @foreach(auth()->user()->tradePairs() as $item)
+                                @if($item->type == 'forex')
+                                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
 
-    <div data-trade-pair-container="Commodities" class="trade-pair-container" style="display: none;">
-        <label for="">Pair</label>
-        <select class="form-select" name="common_pair" aria-label="Default select example">
-            <option selected disabled>..select..</option>
-            @foreach(auth()->user()->tradePairs() as $item)
-                @if($item->type == 'commodities')
-                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
+                    <div data-trade-pair-container="Commodities" class="trade-pair-container" style="display: none;">
+                        <label for="">Pair</label>
+                        <select class="form-select" name="common_pair" aria-label="Default select example">
+                            <option selected disabled>..select..</option>
+                            @foreach(auth()->user()->tradePairs() as $item)
+                                @if($item->type == 'commodities')
+                                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
 
-    <div data-trade-pair-container="Indices" class="trade-pair-container" style="display: none;">
-        <label for="">Pair</label>
-        <select class="form-select" name="indices_pair" aria-label="Default select example">
-            <option selected disabled>..select..</option>
-            @foreach(auth()->user()->tradePairs() as $item)
-                @if($item->type == 'indices')
-                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
+                    <div data-trade-pair-container="Indices" class="trade-pair-container" style="display: none;">
+                        <label for="">Pair</label>
+                        <select class="form-select" name="indices_pair" aria-label="Default select example">
+                            <option selected disabled>..select..</option>
+                            @foreach(auth()->user()->tradePairs() as $item)
+                                @if($item->type == 'indices')
+                                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
 
-    <div data-trade-pair-container="Bonds" class="trade-pair-container" style="display: none;">
-        <label for="">Pair</label>
-        <select class="form-select" name="bond_pair" aria-label="Default select example">
-            <option selected disabled>..select..</option>
-            @foreach(auth()->user()->tradePairs() as $item)
-                @if($item->type == 'bonds')
-                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
+                    <div data-trade-pair-container="Bonds" class="trade-pair-container" style="display: none;">
+                        <label for="">Pair</label>
+                        <select class="form-select" name="bond_pair" aria-label="Default select example">
+                            <option selected disabled>..select..</option>
+                            @foreach(auth()->user()->tradePairs() as $item)
+                                @if($item->type == 'bonds')
+                                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
 
-    <div data-trade-pair-container="ETFs" class="trade-pair-container" style="display: none;">
-        <label for="">Pair</label>
-        <select class="form-select" name="etf_pair" aria-label="Default select example">
-            <option selected disabled>..select..</option>
-            @foreach(auth()->user()->tradePairs() as $item)
-                @if($item->type == 'etf')
-                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
-</div>
+                    <div data-trade-pair-container="ETFs" class="trade-pair-container" style="display: none;">
+                        <label for="">Pair</label>
+                        <select class="form-select" name="etf_pair" aria-label="Default select example">
+                            <option selected disabled>..select..</option>
+                            @foreach(auth()->user()->tradePairs() as $item)
+                                @if($item->type == 'etf')
+                                    <option value="{{ $item->pair }}">{{ $item->pair }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="mb-20">
                     <label for="time-interval">Select Time Interval</label>
@@ -198,33 +199,33 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Get the trade market select element and its related pair containers
-    const tradeMarketSelect = document.getElementById("tradeMarketSelect");
-    const tradePairContainers = document.querySelectorAll(".trade-pair-container");
+    document.addEventListener("DOMContentLoaded", () => {
+        // Get the trade market select element and its related pair containers
+        const tradeMarketSelect = document.getElementById("tradeMarketSelect");
+        const tradePairContainers = document.querySelectorAll(".trade-pair-container");
 
-    // Function to hide all trade pair containers
-    const hideAllTradeContainers = () => {
-        tradePairContainers.forEach(container => {
-            container.style.display = "none";
-        });
-    };
+        // Function to hide all trade pair containers
+        const hideAllTradeContainers = () => {
+            tradePairContainers.forEach(container => {
+                container.style.display = "none";
+            });
+        };
 
-    // Initial hide of all containers
-    hideAllTradeContainers();
-
-    // Listen for changes on the trade market select
-    tradeMarketSelect.addEventListener("change", (event) => {
+        // Initial hide of all containers
         hideAllTradeContainers();
 
-        const selectedMarket = event.target.value;
-        if (selectedMarket) {
-            // Look for the container that corresponds to the selected market
-            const targetContainer = document.querySelector(`[data-trade-pair-container="${selectedMarket}"]`);
-            if (targetContainer) {
-                targetContainer.style.display = "block";
+        // Listen for changes on the trade market select
+        tradeMarketSelect.addEventListener("change", (event) => {
+            hideAllTradeContainers();
+
+            const selectedMarket = event.target.value;
+            if (selectedMarket) {
+                // Look for the container that corresponds to the selected market
+                const targetContainer = document.querySelector(`[data-trade-pair-container="${selectedMarket}"]`);
+                if (targetContainer) {
+                    targetContainer.style.display = "block";
+                }
             }
-        }
+        });
     });
-});
 </script>

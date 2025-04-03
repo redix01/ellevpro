@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Legacy Landing Page</title>
+    <title>{{ env('APP_NAME') }} | Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -114,7 +114,7 @@
         <div class="col-md-12 col-lg-5">
             <div class="login-form">
                 <h2 class="text-white mb-4 text-center">LOGIN</h2>
-                <form action="{{ route('login') }}" method="POST">
+                <form action="{{ route('signin') }}" method="POST">
                     @csrf
                     @if ($errors->any())
                         <div class="alert alert-danger">

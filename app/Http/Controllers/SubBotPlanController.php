@@ -18,24 +18,37 @@ class SubBotPlanController extends Controller
 
     public function store(Request $request)
     {
+        $user = auth()->user();
         $planId = $request->bot_plan_id;
+
+
         $bot = BotPlans::findOrFail($planId);
-        if ($bot->amount > auth()->user()->balance)
-        {
+        if ($bot->amount > $user->balance) {
             return redirect()->back()->with('error', 'Insufficient Balance');
         }
-        $data = new SubBotPlan();
-        $data->user_id = auth()->id();
-        $data->bot_plan_id = $request->bot_plan_id;
-        $data->amount = $request->amount;
-        $data->pair = $request->pair;
-        $data->status = 1;
-        $data->save();
-        $user = Auth::user();
-        $user->balance -= $request->amount;
-        $user->acum_balance += $request->amount;
-        $user->save();
+
+        // Check if the pair already exists for this bot plan
+        $existingPair = SubBotPlan::where('bot_plan_id', $planId)
+            ->where('pair', $request->pair)
+            ->exists();
+
+        if ($existingPair) {
+            return redirect()->back()->with('error', 'This trading pair is already assigned to this Bot.');
+        }
+
+        $data = SubBotPlan::create([
+            'user_id' => $user->id,
+            'bot_plan_id' => $planId,
+            'amount' => $request->amount,
+            'pair' => $request->pair,
+            'status' => 1
+        ]);
+
+        $user->decrement('balance', $request->amount);
+        $user->increment('acum_balance', $request->amount);
+
         return redirect()->back()->with('success', 'Bot Activated Successfully');
     }
+
 
 }

@@ -20,7 +20,11 @@ class CopiedTradeController extends Controller
     {
         $traderId = $request->input('trader_id');
         $data = CopyTrader::find($traderId);
-        if($request->amount > $data->amount)
+        if($request->amount < $data->amount)
+        {
+            return redirect()->back()->with('error', 'Entered amount is less than minimum');
+        }
+        if($request->amount > auth()->user()->balance)
         {
             return redirect()->back()->with('error', 'Insufficient Balance, Kindly fund your wallet');
         }

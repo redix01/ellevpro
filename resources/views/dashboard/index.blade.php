@@ -230,9 +230,8 @@
                                     <div class="mb-20">
                                         <label for="">Select Account Type</label>
                                         <select name="acct_type" class="form-select" aria-label="Default select example">
-                                            <option disabled selected>...</option>
-                                            <option value="{{ $user->balance }}">Main Balance ({{ number_format($user->balance, 2)}})</option>
-                                           <option value="{{ $user->demo_balance }}">Demo Account ({{ number_format($user->demo_balance, 2)}})</option>
+                                            <option value="Live" selected>Main Balance ({{ number_format($user->balance, 2)}})</option>
+                                           <option value="Demon">Demo Account ({{ number_format($user->demo_balance, 2)}})</option>
                                         </select>
                                     </div>
                                     <div class="mb-20">
