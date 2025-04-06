@@ -139,12 +139,12 @@
                         <div class="col-lg-6">
                             <label for="">Password</label>
                             <input type="password" name="password" class="form-control form-control-lg"
-                                   placeholder="First name">
+                                   placeholder="Password">
                         </div>
                         <div class="col-lg-6">
                             <label for="">Confirm Password</label>
                             <input type="password" name="password_confirmation" class="form-control form-control-lg"
-                                   placeholder="Last name">
+                                   placeholder="Confirm Password">
                         </div>
                     </div>
 
