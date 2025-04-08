@@ -129,7 +129,7 @@
                                                                 <div class="user-card">
                                                                     <div
                                                                         @php
-                                                                            $nameParts = explode(' ', $item->name);
+                                                                            $nameParts = explode(' ', $item->fullname());
                                                                             $initials = strtoupper(substr($nameParts[0], 0, 1) . (isset($nameParts[1]) ? substr($nameParts[1], 0, 1) : ''));
                                                                         @endphp
 
@@ -137,7 +137,7 @@
                                                                         <span class="text-capitalize">{{ $initials }}</span>
                                                                     </div>
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">{{ $item->name ?? ''}} <span
+                                                                        <span class="tb-lead">{{ $item->fullname() ?? ''}} <span
                                                                                 class="dot dot-success d-md-none ms-1"></span></span>
                                                                         <span>{{ $item->email ?? ''}}</span>
                                                                     </div>
