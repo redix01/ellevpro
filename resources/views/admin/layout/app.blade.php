@@ -181,7 +181,7 @@
                                                 </div>
                                                 <div class="user-info d-none d-md-block">
                                                     <div class="user-status">Administrator</div>
-                                                    <div class="user-name dropdown-indicator">{{ auth()->user()->name }}</div>
+                                                    <div class="user-name dropdown-indicator">{{ auth()->user()->fullname() }}</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -192,7 +192,7 @@
                                                         <span>AD</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">{{ auth()->user()->name }}</span>
+                                                        <span class="lead-text">{{ auth()->user()->fullname() }}</span>
                                                         <span class="sub-text">{{ auth()->user()->email }}</span>
                                                     </div>
                                                 </div>
