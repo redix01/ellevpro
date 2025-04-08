@@ -51,7 +51,7 @@
                                               @foreach($withdraws as $item)
                                                    <tr class="border-b2">
                                                       <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                       <td>{{ $item->user->name ?? ''}}</td>
+                                                       <td>{{ $item->user->fullname() ?? ''}}</td>
                                                       <td>{{ number_format($item->amount, 5) ?? ''}}</td>
                                                       <td>{{ $item->wallet ?? '' }}</td>
                                                       <td>{{ $item->account_type ?? '' }}</td>

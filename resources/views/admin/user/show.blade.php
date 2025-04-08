@@ -11,7 +11,7 @@
                     <h2 class="nk-block-title fw-normal">User Profile</h2>
                     <div class="nk-block-des">
                         <p>
-                            {{ $user->name }} Profile Information
+                            {{ $user->fullname() }} Profile Information
                         </p>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                         <div class="data-col">
                             <span class="data-label">Full Name</span>
-                            <span class="data-value">{{ $user->name ?? '' }}</span>
+                            <span class="data-value">{{ $user->fullname() ?? '' }}</span>
                         </div>
 
                     </div><!-- .data-item -->
@@ -152,11 +152,11 @@
                     <div class="row">
                      <div class="col m-3">
                         <h6>ID image Front</h6>
-                        <img src="{{ asset('storage/'.$user->id_image_1) }}" height="200" width="190" alt="{{ $user->name }}">
+                        <img src="{{ asset('storage/'.$user->id_image_1) }}" height="200" width="190" >
                     </div>
                     <div class="col m-3">
                         <h6>ID image Back</h6>
-                        <img src="{{ asset('storage/'.$user->id_image_2) }}" height="200" width="190" alt="{{ $user->name }}">
+                        <img src="{{ asset('storage/'.$user->id_image_2) }}" height="200" width="190" >
                     </div>
                     </div>
                 </div><!-- .nk-data -->

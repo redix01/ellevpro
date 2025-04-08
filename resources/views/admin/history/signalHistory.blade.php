@@ -33,7 +33,7 @@
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
                                                 <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->user->name ?? '' }}</td>
+                                                <td>{{ $item->user->fullname() ?? '' }}</td>
                                                 <td>{{ $item->trade_signal->name ?? '' }}</td>
                                                 <td>${{ number_format($item->amount, 2) ?? '' }}</td>
                                                 <td>${{ number_format($item->profit, 2) ?? '' }}</td>

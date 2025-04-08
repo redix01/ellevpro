@@ -54,7 +54,7 @@
                                               @foreach($deposits as $item)
                                                    <tr class="border-b2">
                                                       <td>{{ date('d M, Y', strtotime($item->created_at)) ?? '' }}</td>
-                                                       <td>{{ $item->user->name ?? ''}}</td>
+                                                       <td>{{ $item->user->fullname() ?? ''}}</td>
                                                       <td>
                                                           <span class="text-warning mt-2">{{ number_format($item->cryptoValue(), 4) ?? '' }} </span>
                                                           {{ $item->crypto_asset->getCryptoShort($item->crypto_asset->name) ?? ''}}

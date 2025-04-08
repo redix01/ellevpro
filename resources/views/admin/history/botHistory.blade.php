@@ -36,7 +36,7 @@
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
                                                 <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->user->name ?? '' }}</td>
+                                                <td>{{ $item->user->fullname() ?? '' }}</td>
                                                 <td>{{ $item->bot_plan->name ?? '' }}</td>
                                                 <td>{{ $item->pair }}</td>
                                                 <td>${{ number_format($item->amount, 2) ?? '' }}</td>

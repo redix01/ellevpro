@@ -20,7 +20,8 @@ class UserSeeder extends Seeder
         if($admin === null){
             DB::table('users')->insert([
                 'id' => Str::uuid(),
-                'name' => 'User Panel',
+                'first_name' => 'User',
+                'last_name' => 'Panel',
                 'username' => 'user',
                 'role' => 'admin',
                 'status' => 1,

@@ -30,7 +30,7 @@
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
                                                 <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->user->name ?? '' }}</td>
+                                                <td>{{ $item->user->fullname() ?? '' }}</td>
                                                 <td>{{ $item->copy_trader->name ?? '' }}</td>
                                                 <td>{!! $item->status() !!}</td>
                                                 <td><a href="{{ route('admin.stopTrade', $item->id) }}" class="btn btn-sm btn-danger">Stop Trade</a></td>

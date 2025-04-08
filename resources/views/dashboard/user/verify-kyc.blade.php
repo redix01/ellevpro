@@ -54,7 +54,7 @@
                                                                 <label class="form-label">Full Name <span class="text-danger">*</span></label>
                                                             </div>
                                                             <div class="form-control-group">
-                                                                <input readonly type="text" value="{{ $user->name }}" name="name" class="form-control form-control-lg">
+                                                                <input readonly type="text" value="{{ $user->fullName() }}" name="name" class="form-control form-control-lg">
                                                                 <small>This is a readonly field</small>
                                                             </div>
                                                         </div>

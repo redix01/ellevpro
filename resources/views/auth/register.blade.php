@@ -125,17 +125,28 @@
                             </ul>
                         </div>
                     @endif
+                    <div class="row mb-2">
+                        <div class="col-lg-6">
+                             <label for="">First Name</label>
+                            <input type="text" name="first_name" class="form-control form-control-lg"
+                               placeholder="First Name">
+                        </div>
+                        <div class="col-lg-6">
+                             <label for="">Last Name</label>
+                            <input type="text" name="last_name" class="form-control form-control-lg"
+                               placeholder="Last Name">
+                        </div>
+                    </div>
 
                     <div class="col-lg-12 mb-2">
-                        <label for="">Full Name</label>
-                        <input type="text" name="name" class="form-control form-control-lg"
-                               placeholder="fullname">
+                        <label for="">Username</label>
+                        <input type="text" name="username" class="form-control form-control-lg" placeholder="Username">
                     </div>
                     <div class="col-lg-12 mb-2">
                         <label for="">Email</label>
                         <input type="email" name="email" class="form-control form-control-lg" placeholder="Last name">
                     </div>
-                    <div class="row mb-2">
+                    <div class="row mb-4">
                         <div class="col-lg-6">
                             <label for="">Password</label>
                             <input type="password" name="password" class="form-control form-control-lg"
@@ -147,11 +158,7 @@
                                    placeholder="Confirm Password">
                         </div>
                     </div>
-
-                    <div class="text-end mb-3">
-                        <a href="#" class="forgot-password">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="btn btn-login w-100 btn-lg">login</button>
+                    <button type="submit" class="btn btn-login w-100 btn-lg">Sign Up</button>
                     <div class="text-center mt-3">
                         <p>Have an Account? <a href="{{ route('login') }}" class="register-link"> Login</a></p>
                     </div>

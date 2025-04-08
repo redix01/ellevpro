@@ -46,7 +46,7 @@
                                               @foreach($data as $item)
                                                    <tr class="border-b2">
                                                       <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                       <td>{{ $item->user->name ?? '' }}</td>
+                                                       <td>{{ $item->user->fullname() ?? '' }}</td>
                                                       <td>{{ number_format($item->amount, 4) ?? '' }} <span>{{ $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) ?? '' }}</span></td>
                                                       <td>{{ $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) ?? ''}}</td>
                                                       <td>{{ number_format($item->profit, 4) ?? '' }} <span>{{ $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) ?? '' }}</span></td>

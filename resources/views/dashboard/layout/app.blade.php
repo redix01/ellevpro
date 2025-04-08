@@ -245,7 +245,7 @@
           <div class="dropdown-menu to-top dropdown-menu-sm">
             <div class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
               <div>
-                <h6 class="text-lg text-primary-light fw-semibold mb-2">{{ auth()->user()->name }}</h6>
+                <h6 class="text-lg text-primary-light fw-semibold mb-2">{{ auth()->user()->fullName() }}</h6>
                 <span>{!! auth()->user()->status() ?? '' !!}</span>
               </div>
               <button type="button" class="hover-text-danger">

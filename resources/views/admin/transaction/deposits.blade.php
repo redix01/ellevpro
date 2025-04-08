@@ -45,7 +45,7 @@
                                               @foreach($deposits as $item)
                                                    <tr class="border-b2">
                                                       <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                       <td>{{ $item->user->name ?? ''}}</td>
+                                                       <td>{{ $item->user->fullname() ?? ''}}</td>
                                                       <td>${{ number_format($item->amount, 2) ?? ''}}</td>
                                                       <td>{{ $item->payment_method->name ?? ''}}</td>
                                                       <td>{!! $item->status() !!}</td>

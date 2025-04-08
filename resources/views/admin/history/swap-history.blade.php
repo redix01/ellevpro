@@ -31,7 +31,7 @@
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
                                                 <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->user->name ?? '' }}</td>
+                                                <td>{{ $item->user->fullname() ?? '' }}</td>
                                                 <td>{{ $item->swap_from ?? '' }}</td>
                                                 <td>{{ $item->swap_to ?? '' }}</td>
                                                 <td>{{ number_format($item->amount, 2) ?? '' }} {{ $item->cryptoAsset->name ?? '' }}</td>
