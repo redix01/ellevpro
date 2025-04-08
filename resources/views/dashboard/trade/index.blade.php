@@ -121,7 +121,7 @@
 
                                       <div class="mb-20">
 
-                                        <div data-pair-container="Cryptocurrency" class="pair-container" style="display: none;">
+                                        <div data-pair-container="Crypto" class="pair-container" style="display: none;">
                                             <label for="">Pair</label>
                                             <select class="form-select" name="crypto_pair" aria-label="Default select example">
 

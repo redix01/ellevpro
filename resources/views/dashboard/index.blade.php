@@ -238,7 +238,7 @@
                                         <label for="">Market</label>
                                         <select name="market" class="form-select" aria-label="Default select example">
                                             <option disabled selected>Select Market</option>
-                                            <option value="Cryptocurrency">Cryptocurrency</option>
+                                            <option value="Crypto">Cryptocurrency</option>
                                             <option value="Stock">Stock</option>
                                             <option value="Forex">Forex</option>
                                             <option value="Commodities">Commodities</option>
@@ -250,7 +250,7 @@
 
                                      <div class="mb-20">
 
-                                        <div data-pair-container="Cryptocurrency" class="pair-container" style="display: none;">
+                                        <div data-pair-container="Crypto" class="pair-container" style="display: none;">
                                             <label for="">Pair</label>
                                             <select class="form-select" name="crypto_pair" aria-label="Default select example">
 
