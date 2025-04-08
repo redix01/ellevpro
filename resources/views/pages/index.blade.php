@@ -116,22 +116,32 @@
             <div class="col-md-12 col-lg-5">
                 <div class="login-form">
                     <h2 class="text-white mb-4 text-center">LOGIN</h2>
-                    <form action="{{ route('login') }}" method="POST">
+                     <form action="{{ route('signin') }}" method="POST">
                     @csrf
-                        <div class="mb-3">
-                            <input type="email" class="form-control form-control-lg" placeholder="Email">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-                        <div class="mb-3 position-relative">
-                            <input type="password" class="form-control form-control-lg" placeholder="Password">
-                        </div>
-                        <div class="text-end mb-3">
-                            <a href="#" class="forgot-password">Forgot Password?</a>
-                        </div>
-                        <button type="submit" class="btn btn-login w-100 btn-lg">login</button>
-                        <div class="text-center mt-3">
-                            <p>Don't have an Account? <a href="{{ route('register') }}" class="register-link"> Register</a></p>
-                        </div>
-                    </form>
+                    @endif
+                    <div class="mb-3">
+                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Email">
+                    </div>
+                    <div class="mb-3 position-relative">
+                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
+                    </div>
+                    <div class="text-end mb-3">
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-login w-100 btn-lg">login</button>
+                    <div class="text-center mt-3">
+                        <p>Don't have an Account? <a href="{{ route('register') }}" class="register-link"> Register</a>
+                        </p>
+                    </div>
+                </form>
                 </div>
             </div>
         </div>
