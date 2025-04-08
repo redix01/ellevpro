@@ -114,7 +114,7 @@
         <div class="col-md-12 col-lg-5">
             <div class="login-form">
                 <h2 class="text-white mb-4 text-center">SIGN UP</h2>
-                <form action="{{ route('register') }}" method="POST">
+                <form action="{{ route('register.store') }}" method="POST">
                     @csrf
                     @if ($errors->any())
                         <div class="alert alert-danger">

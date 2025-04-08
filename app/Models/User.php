@@ -37,6 +37,7 @@ class User extends Authenticatable
         'username',
         'avatar',
         'acum_balance',
+        'gender',
     ];
 
     protected $hidden = [
