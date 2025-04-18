@@ -36,7 +36,7 @@
                             </div>
                             @else
                                 <div class="col-lg-10 offset-lg-1 text-center">
-                                    <h4>Your KYC Verification is under review</h4>
+                                    <h4 class="text-warning">Your KYC Verification is under review</h4>
                                 </div>
                             @endif
 
