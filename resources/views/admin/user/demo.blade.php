@@ -12,7 +12,7 @@
                                     <div class="nk-block-head nk-block-head-lg">
                                         <div class="nk-block-between">
                                             <div class="nk-block-head-content">
-                                                <h4 class="nk-block-title">{{ $user->name }} Information</h4>
+                                                <h4 class="nk-block-title">{{ $user->fullName() ?? 'User' }} Information</h4>
                                             </div>
                                             <div class="nk-block-head-content align-self-start d-lg-none">
                                                 <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
@@ -27,7 +27,7 @@
                                             <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                                                 <div class="data-col">
                                                     <span class="data-label">Full Name</span>
-                                                    <span class="data-value">{{ $user->name }}</span>
+                                                    <span class="data-value">{{ $user->fullName() ?? '' }}</span>
                                                 </div>
                                                 <div class="data-col data-col-end"><span class="data-more"></span></div>
                                             </div><!-- data-item -->
@@ -131,10 +131,10 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col">
-                                                                ${{ number_format($item->price, 2) }}
+                                                                ${{ number_format($item->price ?? 0, 2) }}
                                                             </td>
-                                                            <td class="nk-tb-col tb-col-md {{ $item->change < 0 ? 'text-danger' : 'text-success' }}">
-                                                                {{ number_format(ceil($item->change), 2) }}%
+                                                            <td class="nk-tb-col tb-col-md {{ ($item->change ?? 0) < 0 ? 'text-danger' : 'text-success' }}">
+                                                                {{ number_format(ceil($item->change ?? 0), 2) }}%
                                                             </td>
                                                             <td class="nk-tb-col ">
                                                                 <span>{{ $item->balance ?? '' }}</span>
@@ -162,7 +162,7 @@
                                                                         <form action="{{ route('admin.updateAsset', $item->id) }}" method="POST" class="form-validate is-alter" enctype="multipart/form-data">
                                                                             @csrf
                                                                             @method('PATCH')
-                                                                            <h4 class="m-3">{{ $item->balance }} <span>{{ $item->getCryptoShort($item->name) }}</span></h4>
+                                                                            <h4 class="m-3">{{ $item->balance ?? 0 }} <span>{{ $item->name ? $item->getCryptoShort($item->name) : '' }}</span></h4>
                                                                             <div class="form-group">
                                                                                 <label class="form-label" for="email-address">Balance</label>
                                                                                 <div class="form-control-wrap">

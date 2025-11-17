@@ -31,11 +31,13 @@ class AdminController extends Controller
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
-        $request->validate(
-            ['name' => 'required']
-        );
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+        ]);
 
-        $user->name = $request['name'];
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name ?? '';
         $user->save();
         return redirect()->back()->with('success', 'Profile updated successfully');
     }

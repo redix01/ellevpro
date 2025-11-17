@@ -10,7 +10,7 @@
                     <h2 class="nk-block-title fw-normal">User Profile</h2>
                     <div class="nk-block-des">
                         <p>
-                            {{ $user->name }} Wallet
+                            {{ $user->fullName() ?? 'User' }} Wallet
                         </p>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                                 @foreach($data as $index => $item)
                                     <tr>
                                         <td>{{ $index+1 }}</td>
-                                        <td>{{ date('d M, Y', strtotime($item->created_at)) ?? '' }}</td>
+                                        <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
                                         <td>{{ $item->wallet ?? '' }}</td>
                                         <td>
                                             <div class="form-control-wrap">

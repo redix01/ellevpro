@@ -35,20 +35,20 @@
                                         @foreach($data as $index => $item)
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
-                                                <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->user->fullname() ?? '' }}</td>
-                                                <td>{{ $item->bot_plan->name ?? '' }}</td>
-                                                <td>{{ $item->pair }}</td>
-                                                <td>${{ number_format($item->amount, 2) ?? '' }}</td>
-                                                <td>${{ number_format($item->profit, 2) ?? '' }}</td>
-                                                <td>{!! $item->status() !!}</td>
+                                                <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                <td>{{ $item->user ? $item->user->fullname() : 'N/A' }}</td>
+                                                <td>{{ $item->bot_plan ? $item->bot_plan->name : 'N/A' }}</td>
+                                                <td>{{ $item->pair ?? '' }}</td>
+                                                <td>${{ number_format($item->amount ?? 0, 2) }}</td>
+                                                <td>${{ number_format($item->profit ?? 0, 2) }}</td>
+                                                <td>{!! $item->status() ?? '' !!}</td>
                                                 <td><a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $item->id }}">Add Profit</a></td>
                                             </tr>
                                             <div class="modal fade" id="exampleModal-{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                               <div class="modal-dialog">
                                                 <div class="modal-content">
                                                   <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $item->bot_plan->name ?? ''}} Bot</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{ ($item->bot_plan ? $item->bot_plan->name : 'N/A') }} Bot</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                   </div>
                                                   <div class="modal-body">

@@ -58,8 +58,8 @@
                                                         <td>{{ $item->time_interval ?? '' }}</td>
                                                         <td>{{ $item->take_profit ?? '' }}</td>
                                                         <td>{{ $item->stop_loss ?? '' }}</td>
-                                                        <td>${{ number_format($item->amount, 2) }}</td>
-                                                        <td>${{ number_format($item->profit, 2) }}</td>
+                                                        <td>${{ number_format($item->amount ?? 0, 2) }}</td>
+                                                        <td>${{ number_format($item->profit ?? 0, 2) }}</td>
                                                         <td>{!! $item->status() ?? ''!!}</td>
                                                         <td>
                                                              <a  class="btn btn-primary btn-sm" data-bs-toggle="modal" href="#buy-coin-{{ $item->id }}"><em class="icon ni ni-edit"></em></a>

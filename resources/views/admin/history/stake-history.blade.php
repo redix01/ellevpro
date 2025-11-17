@@ -45,12 +45,12 @@
                                               <tbody>
                                               @foreach($data as $item)
                                                    <tr class="border-b2">
-                                                      <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                       <td>{{ $item->user->fullname() ?? '' }}</td>
-                                                      <td>{{ number_format($item->amount, 4) ?? '' }} <span>{{ $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) ?? '' }}</span></td>
-                                                      <td>{{ $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) ?? ''}}</td>
-                                                      <td>{{ number_format($item->profit, 4) ?? '' }} <span>{{ $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) ?? '' }}</span></td>
-                                                      <td>{!! $item->status() !!}</td>
+                                                      <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                       <td>{{ $item->user ? $item->user->fullname() : 'N/A' }}</td>
+                                                      <td>{{ number_format($item->amount ?? 0, 4) }} <span>{{ ($item->staking_plan && $item->staking_plan->stake_token) ? $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) : '' }}</span></td>
+                                                      <td>{{ ($item->staking_plan && $item->staking_plan->stake_token) ? $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) : 'N/A' }}</td>
+                                                      <td>{{ number_format($item->profit ?? 0, 4) }} <span>{{ ($item->staking_plan && $item->staking_plan->stake_token) ? $item->staking_plan->getCryptoShort($item->staking_plan->stake_token) : '' }}</span></td>
+                                                      <td>{!! $item->status() ?? '' !!}</td>
                                                       <td>
                                                              <a  class="btn btn-primary btn-sm" data-bs-toggle="modal" href="#buy-coin-{{ $item->id }}"><em class="icon ni ni-edit"></em></a>
                                                        </td>

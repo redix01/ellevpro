@@ -262,8 +262,8 @@
                                         @foreach($deposits as $index => $item)
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
-                                                <td>{{ $item->crypto_asset->name ?? '' }}</td>
-                                                <td>${{ number_format($item->amount, 2) }}</td>
+                                                <td>{{ $item->crypto_asset ? $item->crypto_asset->name : 'N/A' }}</td>
+                                                <td>${{ number_format($item->amount ?? 0, 2) }}</td>
                                                 <td>{!! $item->status() !!}</td>
                                                 <td>{{ date('d M, Y', strtotime($item->created_at)) }} </td>
                                             </tr>
@@ -291,8 +291,8 @@
                                         @foreach($withdrawal as $index => $item)
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
-                                                <td>{{ $item->crypto_asset->name ?? '' }}</td>
-                                                <td>{{ number_format($item->amount, 5) }}</td>
+                                                <td>{{ $item->crypto_asset ? $item->crypto_asset->name : 'N/A' }}</td>
+                                                <td>{{ number_format($item->amount ?? 0, 5) }}</td>
                                                 <td>{!! $item->status() !!}</td>
                                                 <td>{{ date('d M, Y', strtotime($item->created_at)) }} </td>
                                             </tr>

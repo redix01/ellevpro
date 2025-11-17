@@ -70,7 +70,7 @@
                     <div class="card h-100">
                         <div class="card-body p-24">
                             <span class="mb-4 text-sm text-secondary-light">Aval Balance</span>
-                            <h6 class="mb-4 text-warning">${{ number_format($user->balance, 2) }}</h6>
+                            <h6 class="mb-4 text-warning">${{ number_format($user->balance ?? 0, 2) }}</h6>
 
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-Buy" role="tabpanel" aria-labelledby="pills-Buy-tab" tabindex="0">
@@ -99,8 +99,8 @@
                                         <label for="">Select Account Type</label>
                                         <select name="acct_type" class="form-select" aria-label="Default select example">
                                             <option disabled selected>...</option>
-                                            <option value="Live">Main Balance ({{ number_format($user->balance, 2)}})</option>
-                                           <option value="Demo">Demo Account ({{ number_format($user->demo_balance, 2)}})</option>
+                                            <option value="Live">Main Balance ({{ number_format($user->balance ?? 0, 2)}})</option>
+                                           <option value="Demo">Demo Account ({{ number_format($user->demo_balance ?? 0, 2)}})</option>
 
                                         </select>
 
@@ -300,8 +300,8 @@
                                             <td>{{ $item->time_interval ?? '' }}</td>
                                             <td>{{ $item->take_profit ?? '' }}</td>
                                             <td>{{ $item->stop_loss ?? '' }}</td>
-                                            <td>${{ number_format($item->amount, 2) }}</td>
-                                            <td>${{ number_format($item->profit, 2) }}</td>
+                                            <td>${{ number_format($item->amount ?? 0, 2) }}</td>
+                                            <td>${{ number_format($item->profit ?? 0, 2) }}</td>
                                             <td>{!! $item->status() ?? ''!!}</td>
                                         </tr>
                                     @endforeach

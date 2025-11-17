@@ -41,7 +41,8 @@ class TradeController extends Controller
             ], 422);
         }
 
-        if (auth()->user()->balance < $request->input('amount')) {
+        $user = auth()->user();
+        if (($user->balance ?? 0) < $request->input('amount')) {
             return redirect()->back()->with('error', "Insufficient balance to execute the trade.");
         }
 
@@ -70,8 +71,8 @@ class TradeController extends Controller
         if ($trade->acct_type == 'Live')
         {
             $user = Auth::user();
-            $user->balance -= $request->input('amount');
-            $user->acum_balance += $request->amount;
+            $user->balance = ($user->balance ?? 0) - $request->input('amount');
+            $user->acum_balance = ($user->acum_balance ?? 0) + $request->amount;
             $user->save();
         }
 

@@ -43,11 +43,11 @@
                                         <table  class="table " style="width:100%">
                                           <tr>
                                             <th>Amount to pay:</th>
-                                            <td>${{ number_format($deposit->amount, 2) }}</td>
+                                            <td>${{ number_format($deposit->amount ?? 0, 2) }}</td>
                                           </tr>
                                           <tr>
                                             <th>Payment Method:</th>
-                                            <td>{{ $deposit->payment_method->name ?? '' }}</td>
+                                            <td>{{ $deposit->payment_method ? $deposit->payment_method->name : 'N/A' }}</td>
                                           </tr>
                                           <tr>
                                             <th>Status:</th>
@@ -57,11 +57,11 @@
                                         <hr>
                                         <div class="d-flex flex-column align-items-center justify-content-center">
                                             <h5 class="text-center">Scan Qrcode</h5>
-                                            {!! QrCode::size(120)->generate($deposit->payment_method->value ?? '') !!}
+                                            {!! QrCode::size(120)->generate($deposit->payment_method ? ($deposit->payment_method->value ?? '') : '') !!}
                                         </div>
                                         <div class="mt-3 ">
                                             <div class="input-group">
-                                                <input type="text" id="foo" class="form-control col-6" value="{{ $deposit->payment_method->value }}">
+                                                <input type="text" id="foo" class="form-control col-6" value="{{ $deposit->payment_method ? ($deposit->payment_method->value ?? '') : '' }}">
                                                 <button type="button" data-clipboard-target="#foo" class="input-group-text bg-base btn btn-primary">
                                                     <iconify-icon icon="lucide:copy"></iconify-icon>
                                                 </button>

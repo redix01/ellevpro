@@ -101,7 +101,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $validateData = $request->validate([
-            'name' => 'nullable',
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
             'email' => 'nullable|email',
             'phone' => 'nullable',
             'telegram' => 'nullable',
@@ -182,7 +183,7 @@ class UserController extends Controller
 
     public function kycStatus($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('dashboard.user.kyc-status', compact('user'));
     }
 

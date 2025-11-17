@@ -41,9 +41,9 @@
                                                 <div class="form-control-select">
                                                     <select name="account_type" class="form-control" id="default-06">
                                                         <option value="Main">Main Bal:
-                                                            ${{ number_format($user->balance, 2) ?? '' }}</option>
+                                                            ${{ number_format($user->balance ?? 0, 2) }}</option>
                                                         <option value="Profit">Profit:
-                                                            ${{ number_format($user->profit, 2) ?? '' }}</option>
+                                                            ${{ number_format($user->profit ?? 0, 2) }}</option>
                                                     </select>
 
                                                 </div>
@@ -135,7 +135,7 @@
                                         <tr>
                                             <td><span class="text-uppercase">{{ substr($item->id, 1, 9) }}</span></td>
                                             <td style="white-space: no-wrap">{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                            <td>${{ number_format($item->amount, 2) ?? ''}}</td>
+                                            <td>${{ number_format($item->amount ?? 0, 2) }}</td>
                                             <td>{{ $item->wallet ?? '' }}</td>
                                             <td>{!! $item->with_status() ?? ''!!}</td>
                                         </tr>

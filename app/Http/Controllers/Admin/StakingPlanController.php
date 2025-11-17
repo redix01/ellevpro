@@ -52,7 +52,7 @@ class StakingPlanController extends Controller
             'roi' => 'nullable|numeric',
             'lock_period_days' => 'nullable|integer|min:0',
         ]);
-        $stakingPlan = StakingPlan::find($id);
+        $stakingPlan = StakingPlan::findOrFail($id);
         $stakingPlan->update($validatedData);
         return back()->with('success', 'Staking plan updated successfully.');
     }

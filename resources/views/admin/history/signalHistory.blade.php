@@ -32,12 +32,12 @@
                                         @foreach($data as $index => $item)
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
-                                                <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->user->fullname() ?? '' }}</td>
-                                                <td>{{ $item->trade_signal->name ?? '' }}</td>
-                                                <td>${{ number_format($item->amount, 2) ?? '' }}</td>
-                                                <td>${{ number_format($item->profit, 2) ?? '' }}</td>
-                                                <td>{!! $item->status() !!}</td>
+                                                <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                <td>{{ $item->user ? $item->user->fullname() : 'N/A' }}</td>
+                                                <td>{{ $item->trade_signal ? $item->trade_signal->name : 'N/A' }}</td>
+                                                <td>${{ number_format($item->amount ?? 0, 2) }}</td>
+                                                <td>${{ number_format($item->profit ?? 0, 2) }}</td>
+                                                <td>{!! $item->status() ?? '' !!}</td>
                                                  <td><a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $item->id }}">
                                                          <em class="ni ni-edit"></em>
                                                      </a></td>
@@ -46,7 +46,7 @@
                                               <div class="modal-dialog">
                                                 <div class="modal-content">
                                                   <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $item->trade_signal->name ?? ''}} Signal</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{ ($item->trade_signal ? $item->trade_signal->name : 'N/A') }} Signal</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                   </div>
                                                   <div class="modal-body">

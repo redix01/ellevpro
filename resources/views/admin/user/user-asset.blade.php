@@ -92,13 +92,13 @@
                                                             {{ $item->balance ?? '' }}
                                                         @endif
 
-                                                        <div><small>${{ number_format($item->usd_rate, 2) }} <small class="text-success">USD</small></small></div>
+                                                        <div><small>${{ number_format($item->usd_rate ?? 0, 2) }} <small class="text-success">USD</small></small></div>
                                                     </td>
                                                     <td class="nk-tb-col ">
-                                                        ${{ number_format($item->price, 2) }}
+                                                        ${{ number_format($item->price ?? 0, 2) }}
                                                     </td>
-                                                    <td class="nk-tb-col  {{ $item->change < 0 ? 'text-danger' : 'text-success' }}">
-                                                        {{ number_format(ceil($item->change), 2) }}%
+                                                    <td class="nk-tb-col  {{ ($item->change ?? 0) < 0 ? 'text-danger' : 'text-success' }}">
+                                                        {{ number_format(ceil($item->change ?? 0), 2) }}%
                                                     </td>
                                                      <td class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">

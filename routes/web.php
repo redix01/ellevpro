@@ -20,13 +20,14 @@ use App\Http\Controllers\WithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.index')->name('index');
-Route::view('/about', 'pages.about')->name('about');
-Route::view('/account', 'pages.account')->name('account');
-Route::view('/trading', 'pages.trading')->name('trading');
-Route::view('/market', 'pages.market')->name('market');
-Route::view('/platform', 'pages.platform')->name('platform');
-Route::view('/news', 'pages.news')->name('news');
-Route::view('/contact-us', 'pages.contact')->name('contact');
+Route::view('products', 'pages.products')->name('products');
+Route::view('market', 'pages.market')->name('market');
+Route::view('about', 'pages.about')->name('about');
+Route::view('contact', 'pages.contact')->name('contact');
+Route::view('terms', 'pages.terms')->name('terms');
+Route::view('privacy', 'pages.privacy')->name('privacy');
+Route::view('faq', 'pages.faq')->name('faq');
+
 Route::view('/consultant', 'pages.consultant')->name('consultant');
 Route::post('/contact/consultant', [ConsultantController::class, 'store'])->name('contact.store');
 

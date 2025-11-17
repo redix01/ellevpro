@@ -63,8 +63,8 @@
                             </div>
                             <div class="mt-3 d-flex ">
                                 <div class="">
-                                    <h6 class="mb-8 text-white">${{ number_format($user->balance, 2) ?? '' }} </h6>
-                                    <span class="text-warning">{{ number_format($user->BTCValue($user->balance), 5) ?? '' }} BTC</span>
+                                    <h6 class="mb-8 text-white">${{ number_format($user->balance ?? 0, 2) }} </h6>
+                                    <span class="text-warning">{{ number_format($user->BTCValue($user->balance ?? 0) ?? 0, 5) }} BTC</span>
                                 </div>
                             </div>
                         </div>
@@ -86,8 +86,8 @@
                             </div>
                             <div class="mt-3 d-flex ">
                                 <div class="">
-                                    <h6 class="mb-8 text-white">${{ number_format($user->acum_balance, 2) ?? '' }} </h6>
-                                    <span  class="text-warning visibility-hidden">{{ number_format($user->BTCValue($user->profit), 5) ?? '' }} BTC</span>
+                                    <h6 class="mb-8 text-white">${{ number_format($user->acum_balance ?? 0, 2) }} </h6>
+                                    <span  class="text-warning visibility-hidden">{{ number_format($user->BTCValue($user->profit ?? 0) ?? 0, 5) }} BTC</span>
                                 </div>
                             </div>
                         </div>
@@ -138,8 +138,8 @@
                             </div>
                             <div class="mt-3 d-flex">
                                 <div>
-                                    <h6 class="mb-8 text-white">${{ number_format($user->profit, 2) ?? '' }} </h6>
-                                    <span class="text-white">{{ number_format($user->BTCValue($user->profit), 5) ?? '' }} BTC</span>
+                                    <h6 class="mb-8 text-white">${{ number_format($user->profit ?? 0, 2) }} </h6>
+                                    <span class="text-white">{{ number_format($user->BTCValue($user->profit ?? 0) ?? 0, 5) }} BTC</span>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                     <div class="card h-100">
                         <div style="background: #273142; color: white" class="card-body p-24">
                             <span class="mb-4 text-sm text-white-50">Avail Balance</span>
-                            <h6 class="mb-4 text-warning">${{ number_format($user->balance, 2) }}</h6>
+                            <h6 class="mb-4 text-warning">${{ number_format($user->balance ?? 0, 2) }}</h6>
 
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-Buy" role="tabpanel" aria-labelledby="pills-Buy-tab" tabindex="0">
@@ -230,8 +230,8 @@
                                     <div class="mb-20">
                                         <label for="">Select Account Type</label>
                                         <select name="acct_type" class="form-select" aria-label="Default select example">
-                                            <option value="Live" selected>Main Balance ({{ number_format($user->balance, 2)}})</option>
-                                           <option value="Demon">Demo Account ({{ number_format($user->demo_balance, 2)}})</option>
+                                            <option value="Live" selected>Main Balance ({{ number_format($user->balance ?? 0, 2)}})</option>
+                                           <option value="Demon">Demo Account ({{ number_format($user->demo_balance ?? 0, 2)}})</option>
                                         </select>
                                     </div>
                                     <div class="mb-20">

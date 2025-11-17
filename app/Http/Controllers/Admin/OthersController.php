@@ -24,7 +24,7 @@ class OthersController extends Controller
         {
             $signal->profit += $request->amount;
             $signal->save();
-            $user = User::find($signal->user_id);
+            $user = User::findOrFail($signal->user_id);
             $user->balance += $request->amount;
             $user->profit += $request->amount;
             $user->save();
@@ -33,7 +33,7 @@ class OthersController extends Controller
         $signal = BuySignal::findOrFail($id);
         $signal->profit -= $request->amount;
         $signal->save();
-        $user = User::find($signal->user_id);
+        $user = User::findOrFail($signal->user_id);
         $user->balance -= $request->amount;
         $user->save();
         return redirect()->back()->with('success', 'Loss Trade Added Successfully');

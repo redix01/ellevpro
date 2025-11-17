@@ -50,9 +50,9 @@
                                               <tbody>
                                               @foreach($withdraws as $item)
                                                    <tr class="border-b2">
-                                                      <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                       <td>{{ $item->user->fullname() ?? ''}}</td>
-                                                      <td>{{ number_format($item->amount, 5) ?? ''}}</td>
+                                                      <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                       <td>{{ $item->user ? $item->user->fullname() : 'N/A' }}</td>
+                                                      <td>{{ number_format($item->amount ?? 0, 5) }}</td>
                                                       <td>{{ $item->wallet ?? '' }}</td>
                                                       <td>{{ $item->account_type ?? '' }}</td>
                                                       <td>{!! $item->with_status() ?? '' !!}</td>
@@ -90,7 +90,7 @@
                                                                         </div>
                                                                         <input type="number" step="0.000001" name="amount" class="form-control" placeholder="Enter Amount">
                                                                     </div>
-                                                                     <p>Wallet Address: <br>{{ $item->address }}</p>
+                                                                     <p>Wallet Address: <br>{{ $item->address ?? 'N/A' }}</p>
                                                                     <div class="buysell-field form-action text-center mt-3">
                                                                         <div>
                                                                             <button type="submit" name="action" value="approve" class="btn btn-success btn-sm" >Approve</button>

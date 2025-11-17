@@ -29,10 +29,10 @@
                                 <div class="nk-wg1-title">Available Balance
                                 </div>
                                 <div class="nk-wg1-amount">
-                                    <div class="amount">{{ number_format($user->usdSum(), 2 ?? '') }}
+                                    <div class="amount">${{ number_format($user->usdSum() ?? 0, 2) }}
                                         <small class="currency currency-btc text-success">USD</small>
                                     </div>
-                                    <div class="amount fs-4">{{ number_format($user->BTCrate((float) $user->usdSum() ?? ''), 8) }}
+                                    <div class="amount fs-4">{{ number_format($user->BTCrate((float) ($user->usdSum() ?? 0)) ?? 0, 8) }}
                                         <small class="currency currency-btc text-warning">BTC</small>
                                     </div>
                                 </div>
@@ -44,13 +44,13 @@
                                         <div class="sub-text"><span>Deposits</span>
                                             <div class="dot" data-bg="#9cabff" style="background: rgb(156, 171, 255);"></div>
                                         </div>
-                                        <div class="lead-text">${{ number_format($user->deposit, 2 ?? '') }}</div>
+                                        <div class="lead-text">${{ number_format($user->deposit ?? 0, 2) }}</div>
                                     </div>
                                     <div class="nk-wg1-sub">
                                         <div class="sub-text"><span>Withdrawal</span>
                                             <div class="dot" data-bg="#baaeff" style="background: rgb(186, 174, 255);"></div>
                                         </div>
-                                        <div class="lead-text">${{ number_format($withdrawal, 2 ?? '') }}</div>
+                                        <div class="lead-text">${{ number_format($withdrawal ?? 0, 2) }}</div>
                                     </div>
                                     </div>
 {{--                                    <div class="nk-wg1-sub">--}}

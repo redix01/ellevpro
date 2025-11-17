@@ -29,10 +29,10 @@
                                         @foreach($trades as $index => $item)
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
-                                                <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->user->fullname() ?? '' }}</td>
-                                                <td>{{ $item->copy_trader->name ?? '' }}</td>
-                                                <td>{!! $item->status() !!}</td>
+                                                <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                <td>{{ $item->user ? $item->user->fullname() : 'N/A' }}</td>
+                                                <td>{{ $item->copy_trader ? $item->copy_trader->name : 'N/A' }}</td>
+                                                <td>{!! $item->status() ?? '' !!}</td>
                                                 <td><a href="{{ route('admin.stopTrade', $item->id) }}" class="btn btn-sm btn-danger">Stop Trade</a></td>
                                             </tr>
                                         @endforeach

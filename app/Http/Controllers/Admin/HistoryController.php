@@ -23,6 +23,11 @@ class HistoryController extends Controller
     {
         $trade = Stake::findOrFail($id);
         $asset = CryptoAsset::where('user_id', $trade->user_id)->where('id', $trade->crypto_asset_id)->first();
+        
+        if (!$asset) {
+            return redirect()->back()->with('error', 'Crypto asset not found for this stake');
+        }
+        
         if ($request->type == 'profit')
         {
             $trade->profit += $request->amount;

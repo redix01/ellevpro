@@ -74,10 +74,10 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col">
-                                                                ${{ number_format($item->price, 2) }}
+                                                                ${{ number_format($item->price ?? 0, 2) }}
                                                             </td>
-                                                            <td class="nk-tb-col {{ $item->change < 0 ? 'text-danger' : 'text-success' }}">
-                                                                {{ number_format(ceil($item->change), 2) }}%
+                                                            <td class="nk-tb-col {{ ($item->change ?? 0) < 0 ? 'text-danger' : 'text-success' }}">
+                                                                {{ number_format(ceil($item->change ?? 0), 2) }}%
                                                             </td>
                                                         </tr>
 

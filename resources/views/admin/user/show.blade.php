@@ -11,7 +11,7 @@
                     <h2 class="nk-block-title fw-normal">User Profile</h2>
                     <div class="nk-block-des">
                         <p>
-                            {{ $user->fullname() }} Profile Information
+                            {{ $user->fullName() ?? 'User' }} Profile Information
                         </p>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                         <div class="data-col">
                             <span class="data-label">Full Name</span>
-                            <span class="data-value">{{ $user->fullname() ?? '' }}</span>
+                            <span class="data-value">{{ $user->fullName() ?? '' }}</span>
                         </div>
 
                     </div><!-- .data-item -->
@@ -103,7 +103,7 @@
                     <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                         <div class="data-col">
                             <span class="data-label">Date of Birth</span>
-                            <span class="data-value">{{ date('d M, Y', strtotime($user->date_of_birth)) }}</span>
+                            <span class="data-value">{{ $user->date_of_birth ? date('d M, Y', strtotime($user->date_of_birth)) : 'Not Set' }}</span>
                         </div>
                     </div><!-- .data-item -->
                     <div class="data-head">
@@ -152,11 +152,19 @@
                     <div class="row">
                      <div class="col m-3">
                         <h6>ID image Front</h6>
-                        <img src="{{ asset('storage/'.$user->id_image_1) }}" height="200" width="190" >
+                        @if($user->id_image_1)
+                            <img src="{{ asset('storage/'.$user->id_image_1) }}" height="200" width="190" >
+                        @else
+                            <p>No image uploaded</p>
+                        @endif
                     </div>
                     <div class="col m-3">
                         <h6>ID image Back</h6>
-                        <img src="{{ asset('storage/'.$user->id_image_2) }}" height="200" width="190" >
+                        @if($user->id_image_2)
+                            <img src="{{ asset('storage/'.$user->id_image_2) }}" height="200" width="190" >
+                        @else
+                            <p>No image uploaded</p>
+                        @endif
                     </div>
                     </div>
                 </div><!-- .nk-data -->
@@ -175,21 +183,21 @@
                         <label class="form-label" for="email-address">Balance</label>
                         <div class="form-control-wrap">
                             <input type="number" step="0.000001" name="balance" class="form-control">
-                            <span class="text-warning">${{ number_format($user->balance, 2) }}</span>
+                            <span class="text-warning">${{ number_format($user->balance ?? 0, 2) }}</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email-address">Profit</label>
                         <div class="form-control-wrap">
                             <input type="number" step="0.000001" name="profit" class="form-control">
-                            <span class="text-warning">${{ number_format($user->profit, 2) }}</span>
+                            <span class="text-warning">${{ number_format($user->profit ?? 0, 2) }}</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email-address">Accumulating Bal</label>
                         <div class="form-control-wrap">
                             <input type="number" step="0.000001" name="acum_balance" class="form-control">
-                            <span class="text-warning">${{ number_format($user->acum_balance, 2) }}</span>
+                            <span class="text-warning">${{ number_format($user->acum_balance ?? 0, 2) }}</span>
                         </div>
                     </div>
                     <div class="form-group">

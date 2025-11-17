@@ -100,8 +100,8 @@
                                             <tr>
                                                 <td><span class="text-uppercase">{{ substr($item->id, 0, 8) }}</span></td>
                                                 <td style="white-space: no-wrap">{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ number_format($item->amount, 2) ?? ''}}</td>
-                                                <td>{{ $item->payment_method->name ?? '' }}</td>
+                                                <td>{{ number_format($item->amount ?? 0, 2) }}</td>
+                                                <td>{{ $item->payment_method ? $item->payment_method->name : 'N/A' }}</td>
                                                 <td>{!! $item->status() !!}</td>
                                                 <td>
                                                     @if($item->status == 1)

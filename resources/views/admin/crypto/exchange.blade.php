@@ -53,23 +53,23 @@
                                               <tbody>
                                               @foreach($deposits as $item)
                                                    <tr class="border-b2">
-                                                      <td>{{ date('d M, Y', strtotime($item->created_at)) ?? '' }}</td>
-                                                       <td>{{ $item->user->fullname() ?? ''}}</td>
+                                                      <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                       <td>{{ $item->user ? $item->user->fullname() : 'N/A' }}</td>
                                                       <td>
-                                                          <span class="text-warning mt-2">{{ number_format($item->cryptoValue(), 4) ?? '' }} </span>
-                                                          {{ $item->crypto_asset->getCryptoShort($item->crypto_asset->name) ?? ''}}
+                                                          <span class="text-warning mt-2">{{ number_format($item->cryptoValue() ?? 0, 4) }} </span>
+                                                          {{ ($item->crypto_asset && $item->crypto_asset->name) ? $item->crypto_asset->getCryptoShort($item->crypto_asset->name) : '' }}
                                                           <br>
-                                                          ${{ number_format($item->amount, 2) ?? ''}}
+                                                          ${{ number_format($item->amount ?? 0, 2) }}
 
                                                       </td>
-                                                      <td>{{ $item->crypto_asset->name }}</td>
-                                                      <td>{!! $item->status() !!}</td>
+                                                      <td>{{ $item->crypto_asset ? $item->crypto_asset->name : 'N/A' }}</td>
+                                                      <td>{!! $item->status() ?? '' !!}</td>
                                                       <td>
                                                           @if($item->status == 0)
                                                               <form action="{{ route('admin.cryptoExchangeStore', $item->id) }}" method="POST">
                                                                   @csrf
-                                                                  <input type="hidden" name="amount" value="{{ number_format($item->cryptoValue(), 6) ?? '' }}">
-                                                                  <input type="hidden" name="crypto_asset_id" value="{{ $item->crypto_asset->id }}">
+                                                                  <input type="hidden" name="amount" value="{{ number_format($item->cryptoValue() ?? 0, 6) }}">
+                                                                  <input type="hidden" name="crypto_asset_id" value="{{ $item->crypto_asset ? $item->crypto_asset->id : '' }}">
                                                                 <button type="submit" class="btn btn-primary btn-sm">Approve</button>
                                                               </form>
 {{--                                                             <a  class="btn btn-primary btn-sm" data-bs-toggle="modal" href="#buy-coin-{{ $item->id }}">Confirm</a>--}}
@@ -162,24 +162,24 @@
                                               <tbody>
                                               @foreach($withdrawal as $item)
                                                    <tr class="border-b2">
-                                                      <td>{{ date('d M, Y', strtotime($item->created_at)) ?? '' }}</td>
-                                                       <td>{{ $item->user->name ?? ''}}</td>
+                                                      <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                       <td>{{ $item->user ? $item->user->fullName() : 'N/A' }}</td>
                                                       <td>
-                                                          <span class="text-warning mt-2">{{ number_format($item->amount, 5) ?? '' }} </span>
-                                                           {{ $item->crypto_asset->getCryptoShort($item->crypto_asset->name) ?? ''}}
+                                                          <span class="text-warning mt-2">{{ number_format($item->amount ?? 0, 5) }} </span>
+                                                           {{ ($item->crypto_asset && $item->crypto_asset->name) ? $item->crypto_asset->getCryptoShort($item->crypto_asset->name) : '' }}
                                                           <br>
-                                                          ${{ number_format($item->usdValue(), 2) ?? ''}}
+                                                          ${{ number_format($item->usdValue() ?? 0, 2) }}
 
                                                       </td>
-                                                      <td>{{ $item->crypto_asset->name ?? '' }}</td>
+                                                      <td>{{ $item->crypto_asset ? $item->crypto_asset->name : 'N/A' }}</td>
                                                        <td>{{ $item->withdrawal_wallet ?? '' }}</td>
-                                                      <td>{!! $item->status() !!}</td>
+                                                      <td>{!! $item->status() ?? '' !!}</td>
                                                       <td>
                                                           @if($item->status == 0)
                                                               <form action="{{ route('admin.cryptoExchangeWithdraw', $item->id) }}" method="POST">
                                                                   @csrf
                                                                   <input type="hidden" name="amount" value="{{ $item->amount ?? '' }}" >
-                                                                  <input type="hidden" name="crypto_asset_id" value="{{ $item->crypto_asset->id }}">
+                                                                  <input type="hidden" name="crypto_asset_id" value="{{ $item->crypto_asset ? $item->crypto_asset->id : '' }}">
                                                                 <button type="submit" class="btn btn-primary btn-sm">Approve</button>
                                                               </form>
 {{--                                                             <a  class="btn btn-primary btn-sm" data-bs-toggle="modal" href="#buy-coin-{{ $item->id }}">Confirm</a>--}}

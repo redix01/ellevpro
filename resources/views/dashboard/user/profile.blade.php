@@ -14,7 +14,7 @@
                     <div class="pb-24 ms-16 mb-24 me-16  mt--100">
                         <div class="text-center border border-top-0 border-start-0 border-end-0">
                             <img src="{{ asset('storage/'.$user->avatar ?? 'assets/images/user.png') }}" alt="" class="border br-white border-width-2-px w-200-px h-200-px rounded-circle object-fit-cover">
-                            <h6 class="mb-0 mt-16">{{ $user->fullname() ?? '' }}</h6>
+                            <h6 class="mb-0 mt-16">{{ $user->fullName() ?? '' }}</h6>
                             <span class="text-secondary-light mb-16">{{ $user->email ?? '' }}</span>
                         </div>
                         <div class="mt-24">
@@ -22,7 +22,7 @@
                             <ul>
                                 <li class="d-flex align-items-center gap-1 mb-12">
                                     <span class="w-30 text-md fw-semibold text-primary-light">Full Name</span>
-                                    <span class="w-70 text-secondary-light fw-medium">: {{ $user->fullname() ?? '' }}</span>
+                                    <span class="w-70 text-secondary-light fw-medium">: {{ $user->fullName() ?? '' }}</span>
                                 </li>
                                 <li class="d-flex align-items-center gap-1 mb-12">
                                     <span class="w-30 text-md fw-semibold text-primary-light"> Email</span>
@@ -80,25 +80,31 @@
                                         <div class="col-sm-6">
                                             <div class="mb-20">
                                                 <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">Full Name <span class="text-danger-600">*</span></label>
-                                                <input type="text" name="name" value="{{ old('name', $user->fullname()) ?? ''  }}" class="form-control radius-8" id="name" placeholder="Enter Full Name">
+                                                <input type="text" name="first_name" value="{{ old('first_name', $user->first_name ?? '') }}" class="form-control radius-8" id="first_name" placeholder="Enter First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-20">
+                                                <label for="last_name" class="form-label fw-semibold text-primary-light text-sm mb-8">Last Name <span class="text-danger-600">*</span></label>
+                                                <input type="text" name="last_name" value="{{ old('last_name', $user->last_name ?? '') }}" class="form-control radius-8" id="last_name" placeholder="Enter Last Name">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-20">
                                                 <label for="email" class="form-label fw-semibold text-primary-light text-sm mb-8">Email <span class="text-danger-600">*</span></label>
-                                                <input type="email" name="email" value="{{ old('email', $user->email) ?? ''  }}" class="form-control radius-8" id="email" placeholder="Enter email address">
+                                                <input type="email" name="email" value="{{ old('email', $user->email ?? '') }}" class="form-control radius-8" id="email" placeholder="Enter email address">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-20">
                                                 <label for="number" class="form-label fw-semibold text-primary-light text-sm mb-8">Phone</label>
-                                                <input type="text" name="phone" value="{{ old('phone', $user->phone) ?? ''  }}" class="form-control radius-8" id="number" placeholder="Enter phone number">
+                                                <input type="text" name="phone" value="{{ old('phone', $user->phone ?? '') }}" class="form-control radius-8" id="number" placeholder="Enter phone number">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-20">
                                                 <label for="number" class="form-label fw-semibold text-primary-light text-sm mb-8">Telegram</label>
-                                                <input type="text" name="telegram" value="{{ old('telegram', $user->telegram) ?? ''  }}" class="form-control radius-8" id="number" placeholder="Enter phone number">
+                                                <input type="text" name="telegram" value="{{ old('telegram', $user->telegram ?? '') }}" class="form-control radius-8" id="number" placeholder="Enter telegram username">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">

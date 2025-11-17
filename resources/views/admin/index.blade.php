@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
                                             <div class="nk-sale-data">
-                                                <span class="amount">${{ number_format($deposits, 2) }}</span>
+                                                <span class="amount">${{ number_format($deposits ?? 0, 2) }}</span>
                                             </div>
 
                                         </div>
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
                                             <div class="nk-sale-data">
-                                                <span class="amount">${{ number_format($withdrawals, 2) }}</span>
+                                                <span class="amount">${{ number_format($withdrawals ?? 0, 2) }}</span>
                                             </div>
 
                                         </div>
@@ -123,28 +123,29 @@
                                                         @foreach($users as $item)
                                                             <tr class="nk-tb-item odd">
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{ date('d M, Y', strtotime($item->created_at)) }}</span>
+                                                                <span>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</span>
                                                             </td>
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div
                                                                         @php
-                                                                            $nameParts = explode(' ', $item->fullname());
-                                                                            $initials = strtoupper(substr($nameParts[0], 0, 1) . (isset($nameParts[1]) ? substr($nameParts[1], 0, 1) : ''));
+                                                                            $fullName = $item->fullName() ?? '';
+                                                                            $nameParts = explode(' ', $fullName);
+                                                                            $initials = strtoupper(substr($nameParts[0] ?? '', 0, 1) . (isset($nameParts[1]) ? substr($nameParts[1], 0, 1) : ''));
                                                                         @endphp
 
                                                                         class="user-avatar bg-dim-primary d-none d-sm-flex">
                                                                         <span class="text-capitalize">{{ $initials }}</span>
                                                                     </div>
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">{{ $item->fullname() ?? ''}} <span
+                                                                        <span class="tb-lead">{{ $item->fullName() ?? 'N/A' }} <span
                                                                                 class="dot dot-success d-md-none ms-1"></span></span>
                                                                         <span>{{ $item->email ?? ''}}</span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb" data-order="35040.34">
-                                                                <span class="tb-amount">{{ number_format($item->balance, 2) ?? '' }} <span
+                                                                <span class="tb-amount">{{ number_format($item->balance ?? 0, 2) }} <span
                                                                         class="currency">USD</span></span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-lg">

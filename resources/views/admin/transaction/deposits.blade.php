@@ -44,11 +44,11 @@
                                               <tbody>
                                               @foreach($deposits as $item)
                                                    <tr class="border-b2">
-                                                      <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
-                                                       <td>{{ $item->user->fullname() ?? ''}}</td>
-                                                      <td>${{ number_format($item->amount, 2) ?? ''}}</td>
-                                                      <td>{{ $item->payment_method->name ?? ''}}</td>
-                                                      <td>{!! $item->status() !!}</td>
+                                                      <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
+                                                       <td>{{ $item->user ? $item->user->fullname() : 'N/A' }}</td>
+                                                      <td>${{ number_format($item->amount ?? 0, 2) }}</td>
+                                                      <td>{{ $item->payment_method ? $item->payment_method->name : 'N/A' }}</td>
+                                                      <td>{!! $item->status() ?? '' !!}</td>
                                                       <td>
                                                           @if($item->status == 0)
                                                               <a href="{{ route('admin.approveDeposit', $item->id) }}" class="btn btn-sm btn-success"><em class="icon ni ni-check"></em></a>
@@ -79,7 +79,11 @@
                                                                     <h5 class="nk-block-title">View Screenshot</h5>
                                                                 </div>
                                                                 <div class="nk-block mt-3">
-                                                                    <img class="mt-2" src="{{ asset('storage/'.$item->payment_proof) }}" height="200" width="150" alt="">
+                                                                    @if($item->payment_proof)
+                                                                        <img class="mt-2" src="{{ asset('storage/'.$item->payment_proof) }}" height="200" width="150" alt="">
+                                                                    @else
+                                                                        <p>No payment proof uploaded</p>
+                                                                    @endif
                                                                 </div><!-- .nk-block -->
                                                             </div><!-- .modal-body -->
                                                             </form>

@@ -19,7 +19,7 @@
                                     <div class="nk-wg7">
                                         <div class="nk-wg7-stats">
                                             <div class="nk-wg7-title">Your Reward</div>
-                                            <div class="number-lg amount">{{ number_format($user->reward, 2 ?? '') }} <small class="text-success fs-4">USD</small></div>
+                                            <div class="number-lg amount">{{ number_format($user->reward ?? 0, 2) }} <small class="text-success fs-4">USD</small></div>
                                         </div>
                                     </div><!-- .nk-wg7 -->
                                 </div><!-- .card-inner -->

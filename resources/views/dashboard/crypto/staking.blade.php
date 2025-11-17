@@ -132,9 +132,9 @@
                                         @foreach($traded as $item)
                                             <tr>
                                                 <td>{{ date('d M, Y', strtotime($item->created_at ?? '')) }}</td>
-                                                <td>{{ $item->staking_plan->stake_token ?? '' }}</td>
-                                                <td>{{ number_format($item->amount, 5) }} <span>{{ $item->staking_plan->stake_token ?? ''}}</span></td>
-                                                <td>{{ number_format($item->profit, 4) ?? '' }} <span>{{ $item->staking_plan->stake_token ?? ''}}</span></td>
+                                                <td>{{ $item->staking_plan ? $item->staking_plan->stake_token : 'N/A' }}</td>
+                                                <td>{{ number_format($item->amount ?? 0, 5) }} <span>{{ $item->staking_plan ? $item->staking_plan->stake_token : '' }}</span></td>
+                                                <td>{{ number_format($item->profit ?? 0, 4) }} <span>{{ $item->staking_plan ? $item->staking_plan->stake_token : '' }}</span></td>
                                                 <td>{!! $item->status() !!}</td>
                                             </tr>
                                         @endforeach

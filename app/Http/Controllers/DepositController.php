@@ -49,7 +49,9 @@ class DepositController extends Controller
             $deposit->save();
         }
         $admin = User::where('role', 'admin')->first();
-        Mail::to($admin)->send(new AdminDepositAlert($deposit));
+        if ($admin && $admin->email) {
+            Mail::to($admin->email)->send(new AdminDepositAlert($deposit));
+        }
         return redirect()->back()->with('success', 'Deposit Confirmed, Awaiting Approval...');
     }
 
