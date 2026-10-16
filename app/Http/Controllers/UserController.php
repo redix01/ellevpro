@@ -31,14 +31,23 @@ class UserController extends Controller
     }
     public function syncCryptoAssets()
     {
-        $cryptoService = new CryptoService();
-        $cryptoService->syncCryptoAssets(auth()->id());
+        try {
+            $cryptoService = new CryptoService();
+            $cryptoService->syncCryptoAssets(auth()->id());
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::warning('Crypto sync failed: ' . $e->getMessage());
+            return response()->json(['message' => 'Crypto sync failed: ' . $e->getMessage()], 503);
+        }
         return response()->json(['message' => 'Crypto assets synced successfully.']);
     }
 
     public function index()
     {
-        $this->syncCryptoAssets();
+        try {
+            $this->syncCryptoAssets();
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::warning('Crypto sync failed on dashboard: ' . $e->getMessage());
+        }
         $user = Auth::user();
         $assets = CryptoAsset::where('user_id', auth()->id())->get();
         $balance = CryptoAsset::where('user_id', auth()->id())->sum('balance');

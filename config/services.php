@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'coinmarketcap' => [
+        'key' => env('COINMARKETCAP_API_KEY'),
+        'url' => env('COINMARKETCAP_API_URL', 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'),
+    ],
+
 ];

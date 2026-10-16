@@ -12,12 +12,15 @@ class CryptoService
 
     public function __construct()
     {
-        $this->apiKey = env('COINMARKETCAP_API_KEY'); // Store API key in .env file
-        $this->url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
+        $this->apiKey = config('services.coinmarketcap.key');
+        $this->url = config('services.coinmarketcap.url', 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest');
     }
 
     public function getTopCryptoAssets()
     {
+        if (empty($this->apiKey)) {
+            throw new \Exception("CoinMarketCap API key missing. Set COINMARKETCAP_API_KEY in your .env file.");
+        }
         $parameters = [
             'start' => '1',
             'limit' => '15',
@@ -51,8 +54,16 @@ class CryptoService
 
         $decodedResponse = json_decode($response, true);
 
+        if (!is_array($decodedResponse)) {
+            throw new \Exception("API error: invalid response from CoinMarketCap.");
+        }
+
         if (isset($decodedResponse['status']['error_code']) && $decodedResponse['status']['error_code'] !== 0) {
-            throw new \Exception("API error: " . $decodedResponse['status']['error_message']);
+            throw new \Exception("API error: " . ($decodedResponse['status']['error_message'] ?? 'Unknown error'));
+        }
+
+        if (!isset($decodedResponse['data']) || !is_array($decodedResponse['data'])) {
+            throw new \Exception("API error: unexpected response structure from CoinMarketCap.");
         }
 
         return $decodedResponse;
